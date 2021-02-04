@@ -1,0 +1,157 @@
+{
+  "name": "easy-snippets",
+  "displayName": "Easy Snippets",
+  "publisher": "ElChiang",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:easySnippets",
+    "onCommand:easySnippets.createEsnp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "easySnippets.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "easySnippets.setWorkspaceFolder",
+        "title": "Set workspace folder",
+        "icon": {
+          "light": "resources/light/setting.svg",
+          "dark": "resources/dark/setting.svg"
+        }
+      },
+      {
+        "command": "easySnippets.openFile",
+        "title": "Open File"
+      },
+      {
+        "command": "easySnippets.syncItem",
+        "title": "Sync",
+        "icon": {
+          "light": "resources/light/sync.svg",
+          "dark": "resources/dark/sync.svg"
+        }
+      },
+      {
+        "command": "easySnippets.syncAll",
+        "title": "Sync All",
+        "icon": {
+          "light": "resources/light/sync.svg",
+          "dark": "resources/dark/sync.svg"
+        }
+      },
+      {
+        "command": "easySnippets.createEsnp",
+        "title": "Create easy-snippets file",
+        "icon": {
+          "light": "resources/light/add.svg",
+          "dark": "resources/dark/add.svg"
+        }
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Easy Snippets",
+        "properties": {
+          "easySnippets.workspaceFolder": {
+            "type": "string",
+            "default": "",
+            "description": "The path of the workspace folder to store the .esnp files."
+          }
+        }
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "snippet-explorer",
+          "title": "Easy Snippets",
+          "icon": "media/esnp.svg"
+        }
+      ]
+    },
+    "views": {
+      "snippet-explorer": [
+        {
+          "id": "easySnippets",
+          "name": "Snippets List",
+          "icon": "media/esnp.svg",
+          "contextualTitle": "Easy Snippets"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "easySnippets.refreshEntry",
+          "when": "view == easySnippets",
+          "group": "navigation"
+        },
+        {
+          "command": "easySnippets.setWorkspaceFolder",
+          "when": "view == easySnippets",
+          "group": "navigation"
+        },
+        {
+          "command": "easySnippets.syncAll",
+          "when": "view == easySnippets",
+          "group": "navigation"
+        },
+        {
+          "command": "easySnippets.createEsnp",
+          "when": "view == easySnippets",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "easySnippets.syncItem",
+          "when": "view == easySnippets && viewItem == snippet",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/js-yaml": "^4.0.0",
+    "@types/mkdirp": "^0.5.2",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^14.0.27",
+    "@types/rimraf": "^3.0.0",
+    "@types/vscode": "^1.52.0",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "glob": "^7.1.6",
+    "mocha": "^8.0.1",
+    "typescript": "^3.8.3",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.0.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^3.0.2"
+  }
+}
