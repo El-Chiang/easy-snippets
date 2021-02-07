@@ -1,12 +1,3 @@
-
-/**
- * @filename parser.ts
- * @create 2021/01/12 16:57:01
- * @author 不狸
- * @contact junyu.junyujiang@alibaba-inc.com
- * @description 
- */
-
 import { SEPARATOR } from './constants';
 
 export interface ISnippetItem {
