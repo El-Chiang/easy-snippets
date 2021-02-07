@@ -1,11 +1,3 @@
-/**
- * @filename easySnippets.ts
- * @create 2021/01/22 12:17:53
- * @author 不狸
- * @contact junyu.junyujiang@alibaba-inc.com
- * @description 
- */
-
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
